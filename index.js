@@ -1,14 +1,19 @@
 import express from 'express';
 import fileUpload from 'express-fileupload';
 import { uploadFile, getFiles, getFile, downloadFile, getFileUrl } from './s3.js';
+import morgan from 'morgan';
 
 const app = express();
 
 // Midelware
+
+app.use(morgan('dev'));
+
 app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: './uploads'
 }));
+
 
 // List all files
 app.get('/files', async (_, res) => {
