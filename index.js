@@ -6,7 +6,6 @@ import morgan from 'morgan';
 const app = express();
 
 // Midelware
-
 app.use(morgan('dev'));
 
 app.use(fileUpload({
